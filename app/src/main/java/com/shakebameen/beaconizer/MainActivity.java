@@ -1,22 +1,20 @@
 package com.shakebameen.beaconizer;
 
-import android.Manifest;
+
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
+import androidx.cardview.widget.CardView;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.Identifier;
-import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 
@@ -45,6 +43,20 @@ public class MainActivity extends Activity implements BeaconConsumer, RangeNotif
 
     private final String TAG = "Beaconizer";
     private BeaconManager mBeaconManager;
+    private float BeaconDistance;
+    CardView cardView = cardView = findViewById(R.id.cardView);
+
+    //Firebase Reference
+    FirebaseStorage FirebaseStorageRef = FirebaseStorage.getInstance();
+
+    //Image reference
+    StorageReference storageRef = FirebaseStorageRef.getReference();
+    StorageReference imageStorageRef = storageRef.child("AdvertisementImages");
+    public StorageReference Adidas = imageStorageRef.child("Adidas01.jpg");
+    public StorageReference Nike   = imageStorageRef.child("Nike01.jpg");
+    public StorageReference Puma = imageStorageRef.child("Puma01.jpg");
+
+
 
     @Override
     public void onResume() {
@@ -76,9 +88,12 @@ public class MainActivity extends Activity implements BeaconConsumer, RangeNotif
                 // This is a Eddystone-UID frame
                 Identifier namespaceId = beacon.getId1();
                 Identifier instanceId = beacon.getId2();
+                BeaconDistance = (float) beacon.getDistance();
                 Log.d(TAG, "I see a beacon transmitting namespace id: "+namespaceId+
                         " and instance id: "+instanceId+
-                        " approximately "+beacon.getDistance()+" meters away.");
+                        " approximately "+BeaconDistance+" meters away.");
+
+                
 
                 // Do we have telemetry data?
                 if (beacon.getExtraDataFields().size() > 0) {
