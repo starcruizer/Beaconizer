@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "873001145839",
+    "firebase_url": "https://beaconizerfirebase.firebaseio.com",
+    "project_id": "beaconizerfirebase",
+    "storage_bucket": "beaconizerfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873001145839:android:e4860b8fc308cf16",
+        "android_client_info": {
+          "package_name": "com.shakebameen.beaconizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873001145839-f7p3739oa1e4adobev417oar3o78epl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0UM4BA_aKsvF7KiJVqfloJ2BMm-l019Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873001145839-f7p3739oa1e4adobev417oar3o78epl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
